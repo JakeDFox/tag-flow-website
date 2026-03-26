@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy — TagFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0c0e;
+  --surface:#18181b;
+  --border:#2a2a2f;
+  --text:#e8e8ea;
+  --muted:#6b6b72;
+  --accent:#7c6af7;
+  --mono:'DM Mono',monospace;
+  --serif:'DM Sans',sans-serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 40px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(12,12,14,0.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.logo{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;letter-spacing:-0.3px;text-decoration:none;color:var(--text)}
+.logo-icon{width:30px;height:30px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:400;transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a[aria-current="page"]{color:var(--text);font-weight:500}
+.nav-cta{padding:8px 18px;background:var(--accent);color:#fff;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .15s}
+.nav-cta:hover{opacity:.85;color:#fff}
+.nav-menu{flex:1;display:flex;justify-content:center}
+.nav-toggle{
+  display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  width:40px;height:40px;padding:0;border:none;background:transparent;cursor:pointer;color:var(--text);
+  border-radius:8px;-webkit-tap-highlight-color:transparent
+}
+.nav-toggle:hover{background:var(--surface)}
+.nav-toggle span{display:block;width:20px;height:2px;background:currentColor;border-radius:1px;transition:transform .2s ease,opacity .2s ease}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-link-mobile-only{display:none}
+body.nav-menu-open{overflow:hidden}
+
+.container{max-width:680px;margin:0 auto;padding:120px 40px 100px}
+
+.doc-tag{font-size:11px;font-family:var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:42px;font-weight:400;letter-spacing:-0.5px;line-height:1.1;margin-bottom:12px}
+.updated{font-size:13px;color:var(--muted);font-family:var(--mono);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+
+h2{font-size:18px;font-weight:600;margin:40px 0 14px;letter-spacing:-0.2px}
+p{color:#c8c8cc;margin-bottom:16px;font-weight:300}
+ul{padding-left:20px;margin-bottom:16px}
+li{color:#c8c8cc;margin-bottom:8px;font-weight:300}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.highlight{
+  background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  border-radius:0 8px 8px 0;
+  padding:16px 20px;margin:24px 0;
+  font-size:14px;color:#c8c8cc;
+}
+
+footer{
+  border-top:1px solid var(--border);padding:32px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:13px;color:var(--muted);
+}
+footer a{color:var(--muted);text-decoration:none;transition:color .15s}
+footer a:hover{color:var(--text)}
+.footer-links{display:flex;gap:24px}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;gap:10px}
+  .logo{flex:1;min-width:0}
+  .nav-menu{
+    position:fixed;top:61px;left:0;right:0;flex:none;justify-content:stretch;
+    max-height:0;overflow:hidden;opacity:0;visibility:hidden;
+    transition:max-height .35s ease,opacity .2s ease,visibility 0s linear .35s;
+    background:rgba(12,12,14,0.98);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);z-index:99
+  }
+  .nav-menu.is-open{
+    max-height:min(100vh - 61px,480px);opacity:1;visibility:visible;
+    transition:max-height .35s ease,opacity .2s ease,visibility 0s
+  }
+  .nav-toggle{display:flex;flex-shrink:0}
+  .nav-cta{flex-shrink:0;padding:8px 14px;font-size:12px}
+  .nav-links{flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 20px}
+  .nav-links a{padding:14px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--text)}
+  .nav-links a:nth-last-child(2){border-bottom:none}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-link-mobile-only{
+    display:block;margin-top:8px;padding-top:18px;border-top:1px solid var(--border);
+    border-bottom:none;font-weight:500;color:var(--accent)
+  }
+  .container{padding:100px 20px 80px}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-icon">⚡</div>
+    TagFlow
+  </a>
+  <div class="nav-menu" id="nav-menu">
+    <div class="nav-links">
+      <a href="index.html#how-it-works">How it works</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html" aria-current="page">Privacy</a>
+      <a href="https://apps.shopify.com" class="nav-link-mobile-only">Add to Shopify →</a>
+    </div>
+  </div>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"
+    aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="https://apps.shopify.com" class="nav-cta">Add to Shopify →</a>
+</nav>
+
+<div style="position:relative;z-index:1">
+<div class="container">
+  <div class="doc-tag">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: March 2026</p>
+
+  <div class="highlight">
+    TagFlow is a Shopify app that automatically tags orders based on rules you define. This policy explains what data we access, why we access it, and how it is handled.
+  </div>
+
+  <h2>1. Who we are</h2>
+  <p>TagFlow ("we", "us", "our") is a Shopify application operated as an independent software product. For questions about this policy, contact us at <a href="mailto:hello@tagflow.run">hello@tagflow.run</a>.</p>
+
+  <h2>2. What data we access</h2>
+  <p>When you install TagFlow, we request access to the following Shopify data:</p>
+  <ul>
+    <li><strong>Orders</strong> — order details including line items, totals, shipping address, payment gateway, and applied tags. This is required to evaluate your tagging rules.</li>
+    <li><strong>Customer data</strong> — customer email address and customer tags, used only when you create rules that condition on these fields.</li>
+    <li><strong>Shop information</strong> — your store domain and access token, used to authenticate API requests on your behalf.</li>
+  </ul>
+  <p>We do not access product inventory, financial reports, staff accounts, or any data outside the scopes listed above.</p>
+
+  <h2>3. How we use your data</h2>
+  <p>Data accessed from your Shopify store is used exclusively to:</p>
+  <ul>
+    <li>Evaluate your tagging rules against incoming orders</li>
+    <li>Apply tags to orders via the Shopify Admin API</li>
+    <li>Store an audit log of rule runs for your reference</li>
+    <li>Display your rules and audit log within the TagFlow app interface</li>
+  </ul>
+  <p>We do not sell, share, or use your store data for advertising, analytics, or any purpose outside of providing the TagFlow service.</p>
+
+  <h2>4. Data storage</h2>
+  <p>TagFlow stores the following data in our database:</p>
+  <ul>
+    <li>Your shop domain and encrypted access token</li>
+    <li>Rules and conditions you create within the app</li>
+    <li>Audit log entries — order ID, order name, rule name, tag applied, source, status, and timestamp</li>
+  </ul>
+  <p>We do not store full order objects, customer profiles, or payment information. Audit log entries contain only the minimum identifiers needed to display your log.</p>
+
+  <h2>5. Data retention</h2>
+  <p>Audit log entries are retained for 90 days by default. When you uninstall TagFlow, your shop data and all associated records are deleted within 48 hours.</p>
+
+  <h2>6. Third-party services</h2>
+  <p>TagFlow is built on <strong>Gadget.dev</strong> for hosting and infrastructure. Your data is processed and stored within Gadget's platform. Gadget's privacy policy is available at <a href="https://gadget.dev/privacy" target="_blank">gadget.dev/privacy</a>.</p>
+  <p>We use <strong>Resend</strong> to send transactional emails such as your welcome email on install. Resend's privacy policy is available at <a href="https://resend.com/privacy" target="_blank">resend.com/privacy</a>.</p>
+  <p>No other third-party services receive your store or customer data.</p>
+
+  <h2>7. Security</h2>
+  <p>Access tokens are encrypted at rest. All communication between TagFlow and Shopify occurs over HTTPS. We follow Shopify's security requirements for partner apps and handle webhook payloads using verified signatures.</p>
+
+  <h2>8. Your rights</h2>
+  <p>You may request deletion of your data at any time by emailing <a href="mailto:hello@tagflow.run">hello@tagflow.run</a> or by uninstalling the app from your Shopify admin. Uninstalling automatically triggers data deletion.</p>
+
+  <h2>9. Shopify compliance</h2>
+  <p>TagFlow is built in accordance with <a href="https://www.shopify.com/legal/api-terms" target="_blank">Shopify's API Terms of Service</a> and <a href="https://www.shopify.com/partners/blog/partner-program-agreement" target="_blank">Partner Program Agreement</a>. We only request API scopes necessary for the app to function.</p>
+
+  <h2>10. Changes to this policy</h2>
+  <p>We may update this policy as the app evolves. Material changes will be communicated via email to the store owner. Continued use of TagFlow after changes constitutes acceptance of the updated policy.</p>
+
+  <h2>11. Contact</h2>
+  <p>For any privacy-related questions or data requests, contact us at <a href="mailto:hello@tagflow.run">hello@tagflow.run</a>. We aim to respond within 2 business days.</p>
+</div>
+
+<footer>
+  <a href="/" class="logo" style="font-size:14px">
+    <div class="logo-icon" style="width:24px;height:24px;font-size:12px">⚡</div>
+    TagFlow
+  </a>
+  <div class="footer-links">
+    <a href="mailto:hello@tagflow.run">hello@tagflow.run</a>
+    <a href="privacy.html" aria-current="page">Privacy Policy</a>
+  </div>
+</footer>
+</div>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
+
+    function setOpen(open) {
+      menu.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('nav-menu-open', open);
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!menu.classList.contains('is-open'));
+    });
+
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setOpen(false);
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  })();
+</script>
+
+</body>
+</html>

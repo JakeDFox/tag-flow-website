@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Support & FAQ — TagFlow</title>
+<meta name="description" content="Get help with TagFlow. Answers to common questions about rules, tagging, the audit log, and billing."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0c0e;
+  --surface:#18181b;
+  --surface2:#1f1f23;
+  --border:#2a2a2f;
+  --border2:#333338;
+  --text:#e8e8ea;
+  --muted:#6b6b72;
+  --accent:#7c6af7;
+  --accent2:#3ecf8e;
+  --mono:'DM Mono',monospace;
+  --serif:'DM Sans',sans-serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 40px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(12,12,14,0.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.logo{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;letter-spacing:-0.3px;text-decoration:none;color:var(--text)}
+.logo-icon{width:30px;height:30px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:400;transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{padding:8px 18px;background:var(--accent);color:#fff;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .15s}
+.nav-cta:hover{opacity:.85;color:#fff}
+.nav-menu{flex:1;display:flex;justify-content:center}
+.nav-toggle{
+  display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  width:40px;height:40px;padding:0;border:none;background:transparent;cursor:pointer;color:var(--text);
+  border-radius:8px;-webkit-tap-highlight-color:transparent
+}
+.nav-toggle:hover{background:var(--surface)}
+.nav-toggle span{display:block;width:20px;height:2px;background:currentColor;border-radius:1px;transition:transform .2s ease,opacity .2s ease}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-link-mobile-only{display:none}
+body.nav-menu-open{overflow:hidden}
+
+.hero{padding:120px 40px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-tag{font-size:11px;font-family:var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
+h1{
+  font-family:var(--serif);font-size:clamp(40px,6.5vw,74px);font-weight:800;line-height:1.05;letter-spacing:-2px;
+  max-width:800px;margin:0 auto 0;
+}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{
+  font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:520px;margin:24px auto 40px;
+  line-height:1.7;font-weight:300;
+}
+
+.search-wrap{max-width:480px;margin:0 auto;position:relative}
+.search-input{
+  width:100%;background:var(--surface);border:1px solid var(--border2);
+  border-radius:10px;padding:14px 18px 14px 44px;
+  font-size:14px;color:var(--text);font-family:var(--sans);outline:none;
+  transition:border-color .15s;
+}
+.search-input:focus{border-color:var(--accent)}
+.search-input::placeholder{color:var(--muted)}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:16px;pointer-events:none}
+
+.layout{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1000px;margin:0 auto;padding:0 40px 100px;align-items:start}
+
+.sidebar{position:sticky;top:80px}
+.sidebar-section{margin-bottom:8px}
+.sidebar-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:8px 12px 4px;font-family:var(--mono)}
+.sidebar-link{display:block;padding:7px 12px;font-size:13px;color:var(--muted);text-decoration:none;border-radius:6px;transition:background .12s,color .12s;border-left:2px solid transparent}
+.sidebar-link:hover{background:var(--surface);color:var(--text)}
+.sidebar-link.active{color:var(--text);background:var(--surface);border-left-color:var(--accent)}
+
+.content{min-width:0}
+
+.faq-section{margin-bottom:56px}
+.section-anchor{display:block;margin-top:-80px;padding-top:80px;visibility:hidden}
+.section-title{
+  font-family:var(--serif);font-size:clamp(30px,3.8vw,46px);font-weight:800;line-height:1.08;letter-spacing:-1.5px;
+  margin-bottom:16px;
+}
+.section-title em{font-style:normal;color:var(--accent)}
+
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;
+  padding:18px 0;display:flex;align-items:center;justify-content:space-between;
+  font-size:14px;font-weight:500;color:var(--text);cursor:pointer;
+  font-family:var(--sans);gap:16px;transition:color .15s;
+}
+.faq-q:hover{color:var(--accent)}
+.faq-chevron{width:18px;height:18px;flex-shrink:0;color:var(--muted);transition:transform .2s}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .25s ease,padding .2s ease;
+  font-size:14px;color:var(--muted);line-height:1.75;font-weight:300;
+}
+.faq-item.open .faq-a{max-height:400px;padding-bottom:18px}
+.faq-a a{color:var(--accent);text-decoration:none}
+.faq-a a:hover{text-decoration:underline}
+.faq-a code{font-family:var(--mono);font-size:12px;background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--accent)}
+.faq-a ul{padding-left:20px;margin-top:8px}
+.faq-a li{margin-bottom:6px}
+
+.contact-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:32px;text-align:center;margin-top:40px;
+}
+.contact-card h3{font-size:15px;font-weight:600;margin-bottom:10px;letter-spacing:-0.2px}
+.contact-card p{font-size:14px;color:var(--muted);margin-bottom:24px;font-weight:300}
+.contact-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 24px;background:var(--accent);color:#fff;
+  border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;
+  transition:opacity .15s;
+}
+.contact-btn:hover{opacity:.85}
+.response-note{font-size:12px;color:var(--muted);margin-top:14px;font-family:var(--mono)}
+
+footer{
+  border-top:1px solid var(--border);padding:32px 40px;display:flex;align-items:center;justify-content:space-between;
+  font-size:13px;color:var(--muted)
+}
+footer a{color:var(--muted);text-decoration:none;transition:color .15s}
+footer a:hover{color:var(--text)}
+.footer-links{display:flex;gap:24px}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;gap:10px}
+  .logo{flex:1;min-width:0}
+  .nav-menu{
+    position:fixed;top:61px;left:0;right:0;flex:none;justify-content:stretch;
+    max-height:0;overflow:hidden;opacity:0;visibility:hidden;
+    transition:max-height .35s ease,opacity .2s ease,visibility 0s linear .35s;
+    background:rgba(12,12,14,0.98);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);z-index:99
+  }
+  .nav-menu.is-open{
+    max-height:min(100vh - 61px,480px);opacity:1;visibility:visible;
+    transition:max-height .35s ease,opacity .2s ease,visibility 0s
+  }
+  .nav-toggle{display:flex;flex-shrink:0}
+  .nav-cta{flex-shrink:0;padding:8px 14px;font-size:12px}
+  .nav-links{flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 20px}
+  .nav-links a{padding:14px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--text)}
+  .nav-links a:nth-last-child(2){border-bottom:none}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-link-mobile-only{
+    display:block;margin-top:8px;padding-top:18px;border-top:1px solid var(--border);
+    border-bottom:none;font-weight:500;color:var(--accent)
+  }
+  .hero{padding:100px 20px 40px}
+  .layout{grid-template-columns:1fr;padding:0 20px 60px}
+  .sidebar{display:none}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-icon">⚡</div>
+    TagFlow
+  </a>
+  <div class="nav-menu" id="nav-menu">
+    <div class="nav-links">
+      <a href="index.html#how-it-works">How it works</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="mailto:hello@tagflow.run">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://apps.shopify.com" class="nav-link-mobile-only">Add to Shopify →</a>
+    </div>
+  </div>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"
+    aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="https://apps.shopify.com" class="nav-cta">Add to Shopify →</a>
+</nav>
+
+<div style="position:relative;z-index:1">
+<div class="hero">
+  <div class="hero-tag">Support</div>
+  <h1>How can we help?</h1>
+  <p class="hero-sub">Answers to the most common questions about TagFlow. Can't find what you need? Just email us.</p>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="search" placeholder="Search questions…" oninput="filterFAQ(this.value)"/>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" aria-label="Topics">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Topics</div>
+      <a href="#getting-started" class="sidebar-link active">Getting started</a>
+      <a href="#rules" class="sidebar-link">Rules & conditions</a>
+      <a href="#audit-log" class="sidebar-link">Audit log</a>
+      <a href="#manual-sync" class="sidebar-link">Manual sync</a>
+      <a href="#billing" class="sidebar-link">Billing</a>
+      <a href="#troubleshooting" class="sidebar-link">Troubleshooting</a>
+    </div>
+  </aside>
+
+  <div class="content">
+
+    <!-- Getting started -->
+    <div class="faq-section" id="getting-started-section">
+      <span class="section-anchor" id="getting-started"></span>
+      <h2 class="section-title">Getting started</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">How do I install TagFlow?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Install TagFlow from the Shopify App Store. Once installed you'll be taken directly into the app. From there, click <strong>+ New rule</strong> to create your first tagging rule. No configuration is required before creating rules.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Do I need Shopify Plus to use TagFlow?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">No. TagFlow works on every Shopify plan — Basic, Grow, Advanced, and Plus. This is one of the main reasons TagFlow exists: Shopify Flow (which offers similar functionality) is only available on Shopify Plus. TagFlow brings automated order tagging to everyone.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">How quickly does TagFlow tag orders after they're placed?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">TagFlow uses Shopify webhooks, which means tagging happens in real time — typically within a few seconds of an order being placed. You can confirm this by checking the audit log after placing a test order.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">How do I create my first rule?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">From the Rules page, click <strong>+ New rule</strong>. Give your rule a name, enter the tag you want applied (e.g. <code>vip-order</code>), then add one or more conditions. All conditions must match for the tag to be applied. Click <strong>Save rule</strong> and it becomes active immediately.</div>
+      </div>
+    </div>
+
+    <!-- Rules -->
+    <div class="faq-section" id="rules-section">
+      <span class="section-anchor" id="rules"></span>
+      <h2 class="section-title">Rules & conditions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">What conditions can I use in a rule?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">TagFlow currently supports the following condition fields:
+          <ul>
+            <li><code>cart_total</code> — the order subtotal in your store currency</li>
+            <li><code>shipping_country</code> — the 2-letter country code of the shipping address</li>
+            <li><code>customer_email</code> — the customer's email address</li>
+            <li><code>payment_gateway</code> — the payment method used (e.g. shopify_payments, paypal)</li>
+            <li><code>line_item_product_tags</code> — tags on any product in the order</li>
+            <li><code>customer_tag</code> — tags on the customer placing the order</li>
+            <li><code>item_count</code> — total number of line items in the order</li>
+            <li><code>discount_code</code> — discount code applied at checkout</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can I add multiple conditions to one rule?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Yes. You can add as many conditions as you need to a single rule. All conditions must match for the tag to be applied — this is an AND relationship. For example, you can create a rule that only fires when cart total is over $200 AND the shipping country is not US.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Does rule order matter?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Rules are evaluated top to bottom in the order shown on the Rules page. Multiple rules can match and apply tags to the same order — TagFlow does not stop after the first match. If you want a rule to take priority, drag it to the top of the list.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can I disable a rule without deleting it?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Yes. Use the toggle next to each rule on the Rules page to enable or disable it. Disabled rules are skipped entirely and will not appear in the audit log.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">What tag format should I use?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Shopify tags are case-sensitive and can contain letters, numbers, hyphens, and underscores. We recommend lowercase with hyphens for readability — for example <code>vip-order</code>, <code>intl-ship</code>, or <code>route-wh-b</code>. Avoid spaces in tag names.</div>
+      </div>
+    </div>
+
+    <!-- Audit log -->
+    <div class="faq-section" id="audit-log-section">
+      <span class="section-anchor" id="audit-log"></span>
+      <h2 class="section-title">Audit log</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">What does the audit log show?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">The audit log records every rule evaluation for every order. Each entry shows the order number, the rule that ran, the tag that was applied (or would have been applied), the source (webhook or manual sync), the status (applied, skipped, or failed), the reason if skipped, and the timestamp.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">What does "skipped" mean in the audit log?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Skipped means the rule ran but did not apply a tag. This is normal and expected behaviour. Common skip reasons include:
+          <ul>
+            <li><strong>Conditions not met</strong> — the order didn't match the rule's conditions</li>
+            <li><strong>Tag already applied</strong> — the tag was already on the order, so no action was needed</li>
+          </ul>
+          Skipped entries are not failures — they're confirmation that the rule ran and made a decision.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">How long are audit log entries kept?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Audit log entries are retained for 90 days. If you need to export your log for record-keeping, use the Export CSV button on the audit log page.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">How is the success rate calculated?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Success rate is calculated as <code>applied ÷ (applied + failed)</code>. Skipped entries are excluded from the calculation — a skipped rule is working correctly, not failing. A 100% success rate means every rule that matched an order successfully applied its tag.</div>
+      </div>
+    </div>
+
+    <!-- Manual sync -->
+    <div class="faq-section" id="manual-sync-section">
+      <span class="section-anchor" id="manual-sync"></span>
+      <h2 class="section-title">Manual sync</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">What is manual sync?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Manual sync lets you run your active rules against existing orders. This is useful when you install TagFlow on a store that already has orders, or when you create a new rule and want to apply it to recent orders retroactively. Every tag applied during a sync is recorded in the audit log with the source marked as <code>manual</code>.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Will manual sync apply duplicate tags?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">No. Before applying a tag, TagFlow checks whether it already exists on the order. If the tag is already there, the rule is logged as skipped with the reason "tag already applied" and no duplicate is created. It is safe to run manual sync multiple times.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">How far back can I sync orders?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">You can sync orders up to 60 days back. For stores with a large order volume, syncing a smaller date range is faster. You can run multiple syncs across different date ranges if needed.</div>
+      </div>
+    </div>
+
+    <!-- Billing -->
+    <div class="faq-section" id="billing-section">
+      <span class="section-anchor" id="billing"></span>
+      <h2 class="section-title">Billing</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">How much does TagFlow cost?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">TagFlow is $14/month after a free 7-day trial. No credit card is required to start the trial. Billing is handled through Shopify — charges appear on your regular Shopify invoice.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Are there any order volume limits?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">No. TagFlow does not limit orders per month or charge based on volume. One flat price covers everything regardless of how many orders your store processes.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">What happens if I uninstall?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Uninstalling TagFlow immediately stops all tagging. Your subscription is cancelled automatically through Shopify and you will not be charged again. Tags that have already been applied to orders remain on those orders — uninstalling does not remove previously applied tags.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can I get a refund?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">If you have an issue with TagFlow that we can't resolve, email us at <a href="mailto:hello@tagflow.run">hello@tagflow.run</a> and we'll sort it out. Shopify processes all billing, but we're happy to work with you directly on any billing concerns.</div>
+      </div>
+    </div>
+
+    <!-- Troubleshooting -->
+    <div class="faq-section" id="troubleshooting-section">
+      <span class="section-anchor" id="troubleshooting"></span>
+      <h2 class="section-title">Troubleshooting</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">My rule isn't tagging orders — what do I check?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">First check the audit log — search for the order number to see exactly what happened. Common causes:
+          <ul>
+            <li>The rule is disabled — check the toggle on the Rules page</li>
+            <li>Conditions aren't matching — check the skip reason in the audit log</li>
+            <li>The condition value doesn't match exactly — country codes are 2 letters uppercase (e.g. <code>US</code>, <code>CA</code>), payment gateways are lowercase (e.g. <code>shopify_payments</code>)</li>
+          </ul>
+          If the order doesn't appear in the audit log at all, email us and we'll investigate.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">How do I find the correct value for payment gateway?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Place a test order using the payment method you want to condition on, then check the audit log. The audit log shows the exact values TagFlow sees for each order. Common gateway values include <code>shopify_payments</code>, <code>paypal</code>, <code>shop_pay</code>, and <code>bogus_gateway</code> for test orders.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Tags are appearing in the audit log as applied but I don't see them on the order — why?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Shopify can take a few seconds to reflect new tags in the admin UI. Try refreshing the order page. If tags still aren't showing after a minute, email us at <a href="mailto:hello@tagflow.run">hello@tagflow.run</a> with the order number and we'll look into it.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">I see duplicate audit log entries for the same order — is that normal?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Each rule creates its own audit log entry per order — so if you have 5 active rules, each order will generate 5 entries (some applied, some skipped). This is expected. If you see the same rule applied twice to the same order, email us as that may indicate a webhook retry issue.</div>
+      </div>
+    </div>
+
+    <!-- Contact card -->
+    <div class="contact-card">
+      <h3>Still need help?</h3>
+      <p>Can't find the answer you're looking for? Send us an email and we'll get back to you fast.</p>
+      <a href="mailto:hello@tagflow.run" class="contact-btn">Email hello&#64;tagflow.run →</a>
+      <p class="response-note">Usually responds within 24 hours</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="logo" style="font-size:14px">
+    <div class="logo-icon" style="width:24px;height:24px;font-size:12px">⚡</div>
+    TagFlow
+  </a>
+  <div class="footer-links">
+    <a href="mailto:hello@tagflow.run">hello@tagflow.run</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</footer>
+</div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    item.classList.toggle('open', !wasOpen);
+  });
+});
+
+document.querySelectorAll('.sidebar-link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+
+function filterFAQ(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const text = item.textContent.toLowerCase();
+    item.style.display = text.includes(q) ? '' : 'none';
+  });
+  document.querySelectorAll('.faq-section').forEach(section => {
+    const visible = [...section.querySelectorAll('.faq-item')].some(i => i.style.display !== 'none');
+    section.style.display = visible ? '' : 'none';
+  });
+}
+</script>
+<script>
+  (function () {
+    var toggle = document.getElementById('nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
+
+    function setOpen(open) {
+      menu.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('nav-menu-open', open);
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!menu.classList.contains('is-open'));
+    });
+
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setOpen(false);
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  })();
+</script>
+
+</body>
+</html>
