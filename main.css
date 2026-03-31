@@ -478,7 +478,11 @@ h1 em {
   transform: translate(-50%, -60%);
   pointer-events: none;
 }
-
+@media (max-width: 768px) {
+  .glow {
+    width: 100vw;
+  }
+}
 /* Section */
 section {
   padding: 100px 40px;
