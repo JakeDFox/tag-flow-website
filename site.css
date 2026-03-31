@@ -992,12 +992,11 @@ footer a:hover {
   font-weight: 300
 }
 
-.privacy-page a {
+.privacy-page .container a {
   color: var(--accent);
   text-decoration: none
 }
-
-.privacy-page a:hover {
+.privacy-page .container a:hover {
   text-decoration: underline
 }
 
