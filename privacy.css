@@ -86,7 +86,7 @@ footer a:hover{color:var(--text)}
     transition:max-height .35s ease,opacity .2s ease,visibility 0s
   }
   .nav-toggle{display:flex;flex-shrink:0}
-  .nav-cta{flex-shrink:0;padding:8px 14px;font-size:12px}
+  .nav-cta{display:none}
   .nav-links{flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 20px}
   .nav-links a{padding:14px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--text)}
   .nav-links a:nth-last-child(2){border-bottom:none}
